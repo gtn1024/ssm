@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.NewsMapper">
+    <insert id="saveNews">
+        INSERT INTO news_info(news_title, news_content)
+        VALUES (#{title}, #{content});
+    </insert>
+    <update id="updateNews">
+        UPDATE news_info
+        SET news_title   = #{title},
+            news_content = #{content}
+        WHERE news_id = #{id};
+    </update>
+    <delete id="deleteNews">
+        DELETE
+        FROM news_info
+        WHERE news_id = #{id};
+    </delete>
+    <select id="getNewsById" resultType="map">
+        SELECT *
+        FROM news_info
+        WHERE news_id = #{id};
+    </select>
+</mapper>
